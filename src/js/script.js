@@ -15,7 +15,7 @@ const searchSystem = new SearchSystemHTML;
 const searchBtn = selectDOMElement('#search-btn');
 const searchInput = selectDOMElement('#search-bar');
 const textInput = selectDOMElement('#search-text')
-const searchBarWrapper = selectDOMElement('#search-bar-wrapper')
+const searchBarWrapper = selectDOMElement('#search-bar-overlay')
 
 
 searchBarWrapper.addEventListener('click', () => {
