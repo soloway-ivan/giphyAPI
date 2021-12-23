@@ -1,0 +1,4 @@
+let giphsGallery = [];
+
+
+export { giphsGallery }

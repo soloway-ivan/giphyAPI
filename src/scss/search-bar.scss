@@ -1,0 +1,53 @@
+* {box-sizing: border-box;}
+
+.search-bar {
+  position: relative;
+  max-width: 900px;
+  padding: 22px 7px;
+  height: 30px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: white;
+  border-radius: 30px;
+  box-sizing: border-box;
+  cursor: pointer;
+  z-index: 1;
+
+  &__input {
+    font-family: 'Ubuntu Mono', monospace;
+    font-size: 18px;
+    font-weight: 500;
+    width: 30px;
+    height: 25px;
+    padding: 0;
+    margin: 0;
+    border: 0;
+    // margin: 0px 40px 0px 10px;
+    position: relative;
+    transition: all 0.4s linear;
+    outline: none;
+  }
+
+  &__icon  {
+    width: 25px;
+    height: 25px;
+    position: absolute;
+    right: 11px;
+
+    background-color: inherit;
+    border: 0;
+    padding: 0;
+    margin: 0;
+    cursor: pointer;
+  }
+
+  &__icon:hover { //add after open
+    transform: scale(1.2);
+    transition: all 0.2s linear;
+  }
+
+  &__img {
+    width: 25px;
+  }
+}
