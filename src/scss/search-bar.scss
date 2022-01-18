@@ -12,13 +12,17 @@
   cursor: pointer;
   z-index: 1;
 
+  &__input::-webkit-search-cancel-button {
+    display: none; 
+  }
+
   &__input {
     font-family: $MAIN_FONT;
     font-size: $FONT_SIZE;
     font-weight: $FONT_WEIGHT;
     width: 30px;
     height: 25px;
-    padding: 0;
+    padding: 5px;
     margin: 0;
     border: 0;
     position: relative;

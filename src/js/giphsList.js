@@ -1,0 +1,3 @@
+let giphsPages = {}
+
+export { giphsPages }

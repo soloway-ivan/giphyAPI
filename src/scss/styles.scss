@@ -2,25 +2,33 @@
 @import 'search-system';
 @import 'search-bar';
 @import 'button';
+@import 'scroll-bar';
+@import 'giphs';
+@import 'pagination';
 
 * {
   box-sizing: border-box;
 }
 
 body {
-  background-color: $colorDARK_CYAN;
+  background-color: $colorBlack;
 }
 
 .wrapper {
-  margin-top: 50px;
+  margin: 40px 20px;
 }
 
 .giphy-service {
   display: flex;
   justify-content: center;
+  min-width: 1290px;
 }
 
 .carousel {
   display: flex;
-  align-items: center;
+  align-items: flex-end;
+}
+
+.loading {
+  opacity: 0;
 }

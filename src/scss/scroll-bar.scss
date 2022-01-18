@@ -1,0 +1,12 @@
+.scroll-bar {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-family: $MAIN_FONT;
+  color: $colorWHITE;
+
+
+  &__progress {
+    margin: 0 10px;
+  }
+}
