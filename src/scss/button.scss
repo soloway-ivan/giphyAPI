@@ -3,14 +3,10 @@
   border: $colorWHITE;
   color: $colorWHITE;
   background-color: $colorShadeOfCyanBlue;
-  cursor: pointer;
   font-size: 17px;
   font-weight: 600;
+  cursor: pointer;
   width: 70px;
   height: 36px;
   padding: 0;
-
-  &:hover {
-    transform: scale(0.9);
-  }
 }

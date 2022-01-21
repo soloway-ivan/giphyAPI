@@ -11,6 +11,7 @@
   box-sizing: border-box;
   cursor: pointer;
   z-index: 1;
+  transition: all 0.2s linear;
 
   &__input::-webkit-search-cancel-button {
     display: none; 

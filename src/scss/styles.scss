@@ -5,6 +5,7 @@
 @import 'scroll-bar';
 @import 'giphs';
 @import 'pagination';
+@import 'loading-spinner';
 
 * {
   box-sizing: border-box;
@@ -31,4 +32,23 @@ body {
 
 .loading {
   opacity: 0;
+}
+
+.activePage {
+  background-color: $colorDarkShadeOfCyanBlue;
+  transform: scale(1.19);
+  margin: 0 4px;
+}
+
+.disActiveButton {
+  opacity: 0.5;
+  cursor: default;
+}
+
+.hover:hover {
+  transform: scale(0.9);
+}
+
+.hover-b:hover {
+  transform: scale(1.13);
 }

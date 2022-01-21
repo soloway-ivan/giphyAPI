@@ -7,7 +7,7 @@ class SearchBar {
 
     const searchSystem = ` 
       <div class="search-system" id="search-system">
-        <div class="search-bar" id="search-bar">
+        <div class="search-bar hover-b" id="search-bar">
           <input class="search-bar__input" id="search-text" type="search" placeholder="Search...">
           <button class ="search-bar__icon" id="search-btn">
             <img src="https://i.ibb.co/d5rcTzD/icons8-magnifying-glass-64.png" alt="search-icon" class ="search-bar__img">
@@ -15,17 +15,19 @@ class SearchBar {
           <div class="search-bar__overlay" id="search-bar-overlay"></div>
         </div>
       </div>
-    `
+    `;
     wrapper.innerHTML += searchSystem;
-  }
+  };
 
   updateSearchInputStyle() {
-    const searchInput = selectDOMElement('#search-text')
-    const searchBarWrapper = selectDOMElement('#search-bar-overlay')
+    const searchInput = selectDOMElement('#search-text');
+    const searchBarWrapper = selectDOMElement('#search-bar-overlay');
+    const searchBar = selectDOMElement('#search-bar');
     searchInput.style.width = this.value + 'px';
     searchInput.style.margin = '0px 40px 0px 15px';
     searchBarWrapper.style.display = 'none';
-  }
-}
+    searchBar.classList.remove('hover-b');
+  };
+};
 
 export { SearchBar };

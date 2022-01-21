@@ -9,15 +9,17 @@ class GiphyService {
     const giphyService = `
       <div class="giphy-service" id="giphy-service" style="display: none">
         <div class="carousel">
-          <button class="button button-left" id="button-previousSlide">
+          <button class="button button-left hover" id="button-previousSlide">
             <div class="button__arrow-left">PREV</div>
           </button>
           <div class="giphs" id="giphs">
             <div class="giphs__page" id="giphs-page">
             </div>
-            <div class="giphs__loading-overlay" id="giphs-loading-overlay"></div>
+            <div class="loading-spinner" id="loading-spinner">
+              <div class="loading-spinner__item" id="loading-spinner-item"></div>
+            </div>
           </div>
-          <button class="button button-right" id="button-nextSlide">
+          <button class="button button-right hover" id="button-nextSlide">
             <div class="button__arrow-right">NEXT</div>
           </button>
         </div>
@@ -25,25 +27,44 @@ class GiphyService {
     `;
     this.giphyService = giphyService;
     this.generateGiphyService();
+
+    this.buttonsActiveController();
   };
   
   generateGiphyService() {
-    return this.wrapper.insertAdjacentHTML('beforeend', this.giphyService );
+    return this.wrapper.insertAdjacentHTML('beforeend', this.giphyService);
   };
 
-  // getCurrentStep() {
-  //   return this.step;
-  // };
-
-
-  // setCurrentStep = (cb) => {
-  //   const value = cb;
-  // };
   stepChangeCB() { }
 
   onStepUpdate = (cb) => {
     this.stepChangeCB = cb;
   };
+
+  buttonsActiveController(step) {
+    const btnPrev = selectDOMElement('#button-previousSlide');
+    const btnNext = selectDOMElement('#button-nextSlide');
+    if (step !== 10 && step !== 1) {
+      btnPrev.classList.remove('disActiveButton');
+      btnNext.classList.remove('disActiveButton');
+      btnNext.classList.add('hover');
+      btnPrev.classList.add('hover');
+    }
+    if (step === 1) {
+      btnPrev.classList.remove('hover');
+      btnPrev.classList.add('disActiveButton');
+  
+      btnNext.classList.remove('disActiveButton');
+      btnNext.classList.add('hover');
+
+    }
+    if (step === 10) {
+      btnPrev.classList.add('hover');
+      btnNext.classList.remove('hover');
+      btnNext.classList.add('disActiveButton');
+      btnPrev.classList.remove('disActiveButton');
+    }
+  }
 
   showGiphyService() {
     selectDOMElement("#giphy-service").style.display = "flex";
@@ -58,9 +79,42 @@ class GiphyService {
     return textInput.value !== '';
   };
 
+
+  getStatusOfLoadingGiphs() {
+    const listOfGiphsWrapper = selectDOMElement('#giphs-page').children;
+    let statusLoading = [];
+
+    for (let index = 0; index <= listOfGiphsWrapper.length - 1; index++) {
+      statusLoading.push(listOfGiphsWrapper[index].childNodes[1].complete)
+    }
+
+    return statusLoading;
+  }
+
+  checkStatusOfLoading(src) {
+    const areLoaded = (element) => {
+      return element === true;
+    }
+    if (src.every(areLoaded)) {
+      return constants.loadingComplete;
+    }
+  }
+
+  checkImgsLoading() {
+    const imageInterval = setInterval(() => {
+      let statusLoading = this.getStatusOfLoadingGiphs()
+
+      if (this.checkStatusOfLoading(statusLoading) === constants.loadingComplete) {
+        selectDOMElement('#loading-spinner').style.opacity = 0;
+        clearInterval(imageInterval); //this
+      }
+    }, 50)
+  }
+
   updateGiphsPage(giphs) {
-    selectDOMElement('#giphs-loading-overlay').style.opacity = 0;
-    return selectDOMElement("#giphs-page").innerHTML = giphs;
+    selectDOMElement("#giphs-page").innerHTML = giphs;
+    selectDOMElement('#loading-spinner').style.opacity = 1;
+    this.checkImgsLoading()
   };
 
   getURLForResponse(API, textInput, page) {
@@ -70,11 +124,15 @@ class GiphyService {
   };
 
   async getResponse(url) {
-    const response = await fetch(url);
+    let response;
+    try {
+      response = await fetch(url);
+    } catch(err) {
+      alert(constants.smthWentWrong)
+    }
     const result = await response.json();
     return result;
   };
-
 
   updateGiphsGallery(content) {
     let giphsGallery = {};
@@ -112,6 +170,8 @@ class GiphyService {
   };
 
   async getGiphs(textInput, page) {
+    this.buttonsActiveController(page)
+
     if (!this.checkInputText(textInput)) {
       return constants.emptyRequest;
     };
@@ -138,63 +198,4 @@ class GiphyService {
   };
 };
 
-
 export { GiphyService };
-
-
-
-
-
-
-
-
-
-
-
- // activeCurrentPage(value) {
-  //   const giphsList = selectDOMElement("#giphs-page");
-  //   this.giphsList = giphsList;
-  //   selectDOMElement(`#giphs-page--${value}`).classList.remove('hidden');
-
-  //   for (let i = 1; i <= this.giphsList.children.length; i++) {
-  //     if (i !== value) {
-  //       if (!selectDOMElement(`#giphs-page--${i}`).classList.contains('hidden')) {
-  //         selectDOMElement(`#giphs-page--${i}`).classList.add('hidden');
-  //       };
-  //     };
-  //   };
-  // };
-
-  // createGiphsPage(page) {
-  //   let newGiphsPage =
-  //     `
-  //     <div class="giphs__page hidden" id="giphs-page--${page}"></div>
-  //   `;
-  //   // return selectDOMElement("#giphs-list").insertAdjacentHTML('beforeend', newGiphsPage);
-  //   return selectDOMElement("#giphs-list").innerHTML =  newGiphsPage;
-  // };
-
-
-
-    // getGiphsPage(page) {
-  //   const giphsPage = selectDOMElement(`#giphs-page--${page}`);
-  //   return giphsPage;
-  // };
-
-  // generatePageOfGiphs(giphs, page) {
-  //   if (this.wrapper.contains(selectDOMElement(`#giphs-page--${page}`))) {
-  //     return false;
-  //   }
-
-  //   if (selectDOMElement("#giphy-service") !== null) {
-  //     this.createGiphsPage(page);
-  //     this.showGiphyService();
-
-  //     this.activeCurrentPage(page);
-
-  //     // return this.getGiphsPage(page).insertAdjacentHTML('beforeend', giphs);
-  //     return this.getGiphsPage(page).innerHTML = giphs;
-  //   };
-  //   // this.wrapper.insertAdjacentHTML('beforeend', this.getGiphsPage(page));
-  //   this.wrapper.innerHTML =  this.getGiphsPage(page);
-  // };

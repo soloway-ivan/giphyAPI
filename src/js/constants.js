@@ -12,6 +12,9 @@ const constants = {
   previousPage: 'PreviousPage',
   pagination: 'pagination',
   openSesame: 'Open sesame!',
-  search: 'Search'
+  search: 'Search',
+  loadingComplete: 'Loading is complete',
+  smthWentWrong: 'Something went wrong :('
+
 }
 export { constants }
