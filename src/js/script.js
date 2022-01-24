@@ -148,7 +148,6 @@ class MainScriptJS {
         case constants.nextPage:
         case constants.previousPage:
           return this.updateStep(step);
-        
         case step :
           this.currentStep = step;
           return this.getGiphs(step);

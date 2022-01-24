@@ -22,7 +22,7 @@ body {
 .giphy-service {
   display: flex;
   justify-content: center;
-  min-width: 1290px;
+  // min-width: 1290px;
 }
 
 .carousel {
@@ -51,4 +51,60 @@ body {
 
 .hover-b:hover {
   transform: scale(1.13);
+}
+
+@media screen and (max-width: 376px) {
+  .wrapper {
+    margin: 20px 0px;
+  }
+
+  .search-system {
+    position: fixed;
+    z-index: 100;
+    left: 0;
+    top: 0px;
+    width: 100%;
+    background-color: #ff03a6;
+    padding-top: 10‒;
+    padding-top: 10px;
+    padding-bottom: 5px;
+  }
+
+  .giphs {
+    margin: 10px 0px;
+  }
+
+  .giphy-service {
+    margin-top: 55px;
+  }
+
+  .giphs__wrapper {
+    margin: 0px;
+    height: auto;
+    width: 155px;
+    margin: 5px;
+  }
+
+  .button {
+    display: none;
+  }
+
+  .pagination {
+    display: none;
+  }
+
+  .loading-spinner {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+  }
+
+//   window.addEventListener('resize', function () {
+//   // if (window.screen.availWidth <= 376) {
+//   //   this.getCommand('X');
+//   // }
+  
+//   console.log(window.scrollY);
+// });
 }

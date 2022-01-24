@@ -5,7 +5,7 @@ const constants = {
   searchInputWidth: 230,
   newRequest: 'New request',
   emptyRequest: 'Empty request',
-  tryToEnterSmth: 'Try to enter something else',
+  tryToEnterSmth: 'Ooops, by request nothing was found  :(',
   tryToWriteSmth: 'Try to write something :)',
   useAlreadyCreatedPage: 'Use already created page',
   nextPage: 'NextPage',
@@ -15,6 +15,5 @@ const constants = {
   search: 'Search',
   loadingComplete: 'Loading is complete',
   smthWentWrong: 'Something went wrong :('
-
 }
 export { constants }
