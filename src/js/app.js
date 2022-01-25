@@ -1,3 +1,7 @@
 import {searchBarModule} from "./search-bar";
 
-searchBarModule();
+window.onload = () => {
+    searchBarModule();
+}
+
+

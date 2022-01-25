@@ -8,6 +8,6 @@ export class AbstractController {
     }
 
     registerListener(event, cb) {
-        eventEmitter.on(event, () => { cb(); })
+        eventEmitter.on(event, (data) => { cb(data); })
     }
 }

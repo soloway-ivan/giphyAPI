@@ -1,6 +1,10 @@
+import {selectDomElement} from "../utils/dom-selector";
+
 export class AbstractView {
 
     template = '';
+    selector = '';
+    viewElement = null;
 
     constructor() {
         this.onViewInit();
@@ -11,10 +15,21 @@ export class AbstractView {
     onViewInit() {}
 
     render(data) {
-        return this.template;
+        this.updateTemplate(data);
+        this.viewElement = selectDomElement(this.selector);
+        if (!this.viewElement) {
+            return;
+        }
+        this.viewElement.innerHTML += this.template;
+    }
+
+    updateTemplate(data) {
+
     }
 
     afterViewInit() {}
 
-    destroyView() {}
+    destroy() {
+        this.viewElement.innerHTML = '';
+    }
 }
