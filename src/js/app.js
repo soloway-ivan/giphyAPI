@@ -1,7 +1,9 @@
-import {searchBarModule} from "./search-bar";
+import {SearchBarModule} from "./search-bar";
+import {AnotherModule} from "./another-module";
 
 window.onload = () => {
-    searchBarModule();
+    const searchBarModule = new SearchBarModule();
+    const anotherModule = new AnotherModule();
 }
 
 

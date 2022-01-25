@@ -2,14 +2,14 @@ import {SearchBarModel} from "./search-bar.model";
 import {SearchBarView} from "./search-bar.view";
 import {SearchBarController} from "./search-bar.controller";
 
-export const searchBarModule = () => {
-    const searchBarModel = new SearchBarModel();
-    const searchBarView = new SearchBarView();
-    const searchBarController = new SearchBarController(searchBarModel, searchBarView);
+export class SearchBarModule {
+    model;
+    view;
+    controller;
 
-    return {
-        model: searchBarModel,
-        view: searchBarView,
-        controller: searchBarController
+    constructor() {
+        this.model = new SearchBarModel();
+        this.view = new SearchBarView();
+        this.controller = new SearchBarController(this.model, this.view);
     }
-};
+}
