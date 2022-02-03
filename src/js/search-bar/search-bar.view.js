@@ -4,14 +4,13 @@ import {selectDomElement} from "../utils/dom-selector";
 import {SearchBarEvent} from "./search-bar.constants";
 
 const template = `
-    <div class="search-bar hover-initial-search-bar" id="search-bar">
+    <div class="search-bar initial-search-bar" id="search-bar">
         <input class="search-bar__input" id="search-input" type="search" placeholder="Search...">
         <button class ="search-bar__icon" id="search-btn">
             <img src="https://i.ibb.co/d5rcTzD/icons8-magnifying-glass-64.png" alt="search-icon" class ="search-bar__img">
         </button>
-    <div class="search-bar__overlay" id="search-bar-overlay"></div>
     </div>
-`;
+`
 
 export class SearchBarView extends AbstractView {
 
@@ -25,20 +24,33 @@ export class SearchBarView extends AbstractView {
 
     afterViewInit() {
         super.afterViewInit();
-        this.searchBarOverlay = selectDomElement('#search-bar-overlay');
+        this.searchBar = selectDomElement('#search-bar');
         this.searchBtn = selectDomElement('#search-btn');
 
-        document.onkeyup = (event) => {
-            if (event.key === 'Enter') {
+        selectDomElement('#search-input').onkeyup = (event) => {
+            if(event.key === 'Enter') {
                 this.sendEvent(SearchBarEvent.CLICK_SEARCH);
-            };
+            }
+        }
+
+        this.searchBar.onclick = () => {
+            if (selectDomElement('#search-bar') === null) {
+                return;
+            }
+            this.toggleSearchBar();
         };
-        this.searchBarOverlay.onclick = () => { 
-            this.sendEvent(SearchBarEvent.CLICK_SEARCHBAR_OVERLAY);
-        };
-        this.searchBtn.onclick = () => { 
+    }
+
+    addListenerSearchBtn() {
+        this.searchBtn.onclick = () => {
             this.sendEvent(SearchBarEvent.CLICK_SEARCH);
         };
+    }
+
+    toggleSearchBar() {
+        selectDomElement('#search-input').classList.add('active-search-bar');
+        selectDomElement('#search-bar').classList.remove('initial-search-bar');
+        this.addListenerSearchBtn();
     }
 
     sendEvent(event) {

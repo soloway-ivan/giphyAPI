@@ -1,6 +1,6 @@
 .search-bar {
   position: relative;
-  max-width: 900px;
+  max-width: $BREACKPOINT;
   padding: 22px 7px;
   height: 30px;
   display: flex;
@@ -9,7 +9,7 @@
   background-color: $colorWHITE;
   border-radius: 30px;
   box-sizing: border-box;
-  z-index: 1;
+  z-index: 10;
   transition: all 0.2s linear;
 
   &__input::-webkit-search-cancel-button {
@@ -20,7 +20,7 @@
     font-family: $MAIN_FONT;
     font-size: $FONT_SIZE;
     font-weight: $FONT_WEIGHT;
-    width: 30px;
+    width: 29px;
     height: 25px;
     padding: 5px;
     margin: 0;
@@ -31,11 +31,10 @@
   }
 
   &__icon  {
-    width: 25px;
+    width: 29px;
     height: 25px;
     position: absolute;
-    right: 11px;
-
+    right: 7px;
     background-color: inherit;
     border: 0;
     padding: 0;
@@ -50,15 +49,5 @@
 
   &__img {
     width: 25px;
-  }
-
-  &__overlay {
-    position: absolute;
-    z-index: 10;
-    width: 45px;
-    height: 45px;
-    cursor: pointer;
-    transition: all 0.4s linear;
-    border-radius: 50%;
   }
 }

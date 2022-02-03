@@ -27,6 +27,8 @@ export class AbstractView {
 
     }
 
+    onClickSearchBarOverlay() {}
+
     afterViewInit() {}
 
     destroy() {

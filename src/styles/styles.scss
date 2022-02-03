@@ -44,8 +44,12 @@ body {
   transform: scale(0.9);
 }
 
-.hover-initial-search-bar:hover {
+.initial-search-bar:hover {
   transform: scale(1.13);
+}
+
+.initial-search-bar {
+  cursor: pointer;
 }
 
 .active-search-bar {
