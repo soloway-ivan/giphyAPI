@@ -43,7 +43,10 @@ body {
 .hover:hover {
   transform: scale(0.9);
 }
-
+  .hover:hover {
+    transform: scale(1.2);
+    transition: all 0.2s linear;
+  }
 .initial-search-bar:hover {
   transform: scale(1.13);
 }

@@ -26,34 +26,43 @@ export class SearchBarView extends AbstractView {
         super.afterViewInit();
         this.searchBar = selectDomElement('#search-bar');
         this.searchBtn = selectDomElement('#search-btn');
+        this.searchInput = selectDomElement('#search-input');
 
-        selectDomElement('#search-input').onkeyup = (event) => {
+        this.searchInput.onkeyup = (event) => {
             if(event.key === 'Enter') {
                 this.sendEvent(SearchBarEvent.CLICK_SEARCH);
+                this.deleteSearchText();
             }
         }
 
         this.searchBar.onclick = () => {
-            if (selectDomElement('#search-bar') === null) {
-                return;
+            if (this.searchBar.classList.contains('initial-search-bar')) {
+                this.toggleSearchBar();
+                this.updateSearchBtn();
             }
-            this.toggleSearchBar();
         };
-    }
-
-    addListenerSearchBtn() {
         this.searchBtn.onclick = () => {
-            this.sendEvent(SearchBarEvent.CLICK_SEARCH);
+            if (!this.searchBar.classList.contains('initial-search-bar')) {
+                this.sendEvent(SearchBarEvent.CLICK_SEARCH);
+                this.deleteSearchText();
+            }
         };
     }
 
     toggleSearchBar() {
-        selectDomElement('#search-input').classList.add('active-search-bar');
-        selectDomElement('#search-bar').classList.remove('initial-search-bar');
-        this.addListenerSearchBtn();
+        this.searchInput.classList.add('active-search-bar');
+        this.searchBar.classList.remove('initial-search-bar');
+    }
+
+    updateSearchBtn() {
+        this.searchBtn.classList.add('hover')
+    }
+
+    deleteSearchText() {
+        this.searchInput.value = '';
     }
 
     sendEvent(event) {
-        eventEmitter.emit(event, selectDomElement('#search-input'));
+        eventEmitter.emit(event, this.searchInput);
     }
 }

@@ -1,7 +1,4 @@
 import {AbstractController} from "../mvc/controller";
-// import eventEmitter from "../mvc/event-emitter";
-
-import {SearchBarView} from "../search-bar/search-bar.view"
 import {SearchBarEvent} from "./search-bar.constants";
 
 export class SearchBarController extends AbstractController {

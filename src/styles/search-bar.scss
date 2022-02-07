@@ -1,15 +1,14 @@
 .search-bar {
   position: relative;
-  max-width: $BREACKPOINT;
+  max-width: $breackpoint;
   padding: 22px 7px;
   height: 30px;
   display: flex;
   justify-content: center;
   align-items: center;
-  background-color: $colorWHITE;
+  background-color: $colorWhite;
   border-radius: 30px;
   box-sizing: border-box;
-  z-index: 10;
   transition: all 0.2s linear;
 
   &__input::-webkit-search-cancel-button {
@@ -17,9 +16,9 @@
   }
 
   &__input {
-    font-family: $MAIN_FONT;
-    font-size: $FONT_SIZE;
-    font-weight: $FONT_WEIGHT;
+    font-family: $primaryFont;
+    font-size: $primaryFontSize;
+    font-weight: $primaryFontWeight;
     width: 29px;
     height: 25px;
     padding: 5px;
@@ -40,11 +39,6 @@
     padding: 0;
     margin: 0;
     cursor: pointer;
-  }
-
-  &__icon:hover {
-    transform: scale(1.2);
-    transition: all 0.2s linear;
   }
 
   &__img {
