@@ -5,5 +5,3 @@ window.onload = () => {
     const searchBarModule = new SearchBarModule();
     const anotherModule = new AnotherModule();
 }
-
-

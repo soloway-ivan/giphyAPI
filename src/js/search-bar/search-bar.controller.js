@@ -4,10 +4,10 @@ import {SearchBarEvent} from "./search-bar.constants";
 export class SearchBarController extends AbstractController {
     constructor(model, view) {
         super(model, view);
-        this.registerListener(SearchBarEvent.CLICK_AWESOME_BUTTON, (data) => {this.onClickAwesomeButton(data)})
+        this.registerListener(SearchBarEvent.CLICK_SEARCH, (data) => { this.onClickSearchBtn(data)})
     }
 
-    onClickAwesomeButton(data) {
-        console.log(data);
+    onClickSearchBtn(data) {
+        console.log(data.value);
     }
 }
